@@ -1,5 +1,4 @@
 David;Capka;33;123456789
 David;Jančik;27;123456788
-Dominik;Brus;21;730591507
-Dominik;Brus;24;730591507
+
 
