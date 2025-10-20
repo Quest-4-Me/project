@@ -4,24 +4,25 @@ import java.util.Scanner;
 
 public class Menu {
     private static Scanner sc = new Scanner(System.in);
-    private static Evidence evidence = new Evidence();
+    private static Evidence evidence = new Evidence(); // instance evidence pojištěných
 
+    // Hlavní metoda pro spuštění menu
     public static void start() {
         String volba;
 
         do {
-            zobrazMenu();
+            zobrazMenu(); // zobrazí nabídku
             volba = sc.nextLine();
 
             switch (volba) {
                 case "1":
-                    pridejPojisteneho();
+                    pridejPojisteneho(); // přidání nového pojištěného
                     break;
                 case "2":
-                    vypisPojistene();
+                    vypisPojistene(); // výpis všech pojištěných
                     break;
                 case "3":
-                    vyhledejPojisteneho();
+                    vyhledejPojisteneho(); // vyhledání pojištěného podle jména a příjmení
                     break;
                 case "4":
                     System.out.println("Ukončuji program...");
@@ -30,6 +31,7 @@ public class Menu {
                     System.out.println("Neplatná volba. Zkuste znovu.");
             }
 
+            // Pauza před návratem do menu
             if (!volba.equals("4")) {
                 System.out.println("\nPokračujte libovolnou klávesou...");
                 sc.nextLine();
@@ -38,6 +40,7 @@ public class Menu {
         } while (!volba.equals("4"));
     }
 
+    // Vypíše hlavní nabídku programu
     private static void zobrazMenu() {
         System.out.println("==============================");
         System.out.println("Evidence pojištěných");
@@ -48,6 +51,7 @@ public class Menu {
         System.out.println("4 - Konec");
     }
 
+    // Přidání nového pojištěného podle vstupu uživatele
     private static void pridejPojisteneho() {
         String jmeno = nactiNeprazdnyText("Zadejte jméno: ");
         String prijmeni = nactiNeprazdnyText("Zadejte příjmení: ");
@@ -59,6 +63,7 @@ public class Menu {
         System.out.println("Pojištěný byl uložen.");
     }
 
+    // Vypíše všechny pojištěné
     private static void vypisPojistene() {
         List<Pojisteny> vsichni = evidence.getVsechny();
         if (vsichni.isEmpty()) {
@@ -70,6 +75,7 @@ public class Menu {
         }
     }
 
+    // Vyhledá pojištěného podle jména a příjmení
     private static void vyhledejPojisteneho() {
         String jmeno = nactiNeprazdnyText("Zadejte jméno: ");
         String prijmeni = nactiNeprazdnyText("Zadejte příjmení: ");
@@ -84,6 +90,7 @@ public class Menu {
         }
     }
 
+    // Načte textový vstup a kontroluje, že není prázdný
     private static String nactiNeprazdnyText(String vyzva) {
         String vstup;
         do {
@@ -96,6 +103,7 @@ public class Menu {
         return vstup;
     }
 
+    // Načte číselný vstup a ověří jeho platnost
     private static int nactiCislo(String vyzva) {
         while (true) {
             System.out.print(vyzva);
